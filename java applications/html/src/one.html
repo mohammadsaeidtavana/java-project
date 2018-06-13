@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form id="saeed">
+    <input type="text" name="name2" id="n1">
+    <input type="text" name="fname2" id="n2">
+    <input type="submit" value="ok" onclick="test()">
+</form>
+<p id="ss" class="main.css" >  </p>
+<script>
+    function test()
+    {
+        var textbox1 = document.getElementById('n1')
+        var textbox2 = document.getElementById('n2')
+        if (textbox1.value =="" || textbox2.value =="")
+        {
+            alert("emplty");
+        }
+        else
+        {
+            alert("ok");
+
+        }
+        var element = document.getElementById("ss");
+        element.innerHTML = "New Header";
+    }
+</script>
+<script>
+    var element = document.getElementById("ss");
+    element.innerHTML = "this is the best thing in the world that can be manage the world";
+</script>
+
+</body>
+</html>

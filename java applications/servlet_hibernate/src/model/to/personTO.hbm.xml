@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="model.to">
+    <class name="model.to.person" table="person1">
+        <meta attribute="class-descript">
+            this attribute is consiste od
+        </meta>
+        <id name="id" type="int">
+            <column name="id" sql-type="NUMBER" not-null="true" />
+            <generator class="increment"/>
+       </id>
+        <property name="name" type="java.lang.String">
+            <column name="name" sql-type="VARCHAR2(20)"/>
+        </property>
+        <property name="fmily" type="java.lang.String">
+            <column name="family" sql-type="VARCHAR2(20)"/>
+        </property>
+        <property name="age" type="int">
+            <column name="age" sql-type="NUMBER"/>
+        </property>
+        <property name="comment" type="java.lang.String">
+            <column name="comments" sql-type="VARCHAR2(50)"/>
+        </property>
+        <many-to-one name="bookLis" class="model.to.book" column="FK_BOOK" cascade="all"/>
+
+    </class>
+</hibernate-mapping>

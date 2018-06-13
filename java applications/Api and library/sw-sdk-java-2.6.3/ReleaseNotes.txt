@@ -1,0 +1,205 @@
+
+Simplewire, Inc.
+SMS Software Development Kit
+Java Edition
+Release Notes
+
+Please report any bugs to http://www.simplewire.com/support/
+__________________________________________________________________
+
+2.6.3 - March 10, 2004
+
+    * Fixed HTTP proxy server authentication bug.
+    
+    * Fixed SOCKS v5 proxy server version checking bug.
+
+2.6.2 - February 26, 2004
+
+    * Modified HTTP classes to support non-SSL connections on
+      JDKs that do not have the JSSE extension installed.
+
+2.6.1 - February 23, 2004
+
+    * Added Optional Network Type "hints" to help choose
+      between TDMA vs. GSM networks.
+
+2.6.0 - January 13, 2004
+
+    * Remove dependancy on external XML parser by embedding
+      a very lightweight parser along with the library.
+      Shrunk the final swsms.jar file by 90% which also
+      has improved performance.
+      
+    * Fixed debug bug where debug output was always printed
+      out -- now it is toggled with the setDebugMode property.
+      
+    * Added getVersion, getMajorVersion, getMinorVersion,
+      and getRevisionVersion to help determine which version
+      of the SMS library is being used.
+      
+    * Added support for specifying the source and destination
+      ports of the message.  On a GSM network, this would
+      be added to the User Data Header.
+      
+    * Added WAP push support.
+
+2.5.1 - July 13, 2003
+
+    * Fixed a minor bug with xml version being sent along
+      with the request.
+
+2.5.0 - March 3, 2003
+
+    * Added ability to receive SMS by parsing a request XML
+      WMP packet.
+      
+    * Added HTTPS support using the J2SE SSL extensions.
+
+2.4.2 - January 30, 2002
+
+    * Added proxy constant PROXY_TYPE_NONE
+    
+    * Default proxy type to PROXY_TYPE_NONE rather than
+      PROXY_TYPE_HTTP.
+
+    * Fixed Proxy Realm bug which required user to enter correct
+      one for proxy access.  The property is now automatically
+      pulled from the proxy during the authentication process.
+      
+    * Removed ThreadGroup (EJB context only) bug which caused 
+      a security exception to be thrown.
+
+    * Removed HTTPClient dependency by adding own HTTP
+      implementation.
+
+    * Reused XML parser between Send() method calls which
+      dramatically increased performance during bulk sending of
+      messages.
+    
+    * Increased total performance nearly 17% by making many small
+      optimizations throughout the entire package.
+
+2.4.1 - October 26, 2001
+
+    * Added OptFlash Property
+
+    * Added ErrorResolution Property
+    
+    * Changed default XML parser from Apache Crimson to Apache
+      Xerces.
+      
+    * Modified the method in which a SAX XML parser was 
+      instantiated.  New method should improve compatability
+      between Java Runtime Environments.
+      
+    * Added methods that allow users to set image data in hex format
+      instead of only being able to specify using filenames.
+      
+    * Added new example code to include new Flash Support
+      
+    * Added error resolution to all new example code so that people can 
+      get informaiton on how to fix errors.
+        
+    * Added more comments about different options people can use or
+      where they can look for more information.
+      
+    * Updated the manual with flash, error resolution, and many
+      other enhancements.
+
+2.4.0 - September 20, 2001
+
+    * Added Smart Messaging Properties
+
+    * Added methods that allow users to set image data in hex format
+      instead of only being able to specify using filenames.
+    
+    * Updated all current example code
+    
+    * Added manual during install
+    
+    * Removed OptDelimiter Default Setting and made it null
+    
+    * Added new default Readme.txt and License.txt information
+    
+    * Removed Java Docs
+    
+    * Changed directory structure in install package
+
+2.3.3 - August 31, 2001
+
+    * Added META-INF folder (for use with the jar file)
+      to address the XML parser compatibility issue.
+
+    * Modified release batch file to include META-INF when
+      creating the jar file.
+
+2.3.2 - August 11, 2001
+
+    * Deprecated UserAgent
+
+    * Added getRequestXML() and setRequestXML().
+
+2.3.1 - August 9, 2001
+
+    * Changed default ServerName from 'rpc' to 'wmp-test'
+
+    * Changed default OptDelimiter from "|" to null
+
+    * OptDataCoding XML bug fixed
+
+    * Added getDebugMode & setDebugMode method for users to activate debugging output
+
+    * Class files are now obfuscated in release
+
+2.3.0 - July 20, 2001
+
+    * Added Unicode suppport.
+
+    * MsgFrom and MsgText are now sent as Unicode.
+
+    * Deprecated RPC loop.
+
+    * Deprecated synchronous.
+
+    * Added Subscriber Password support.
+
+    * Revised comments in examples.
+
+    * Added set and get methods for OptDataCoding.
+
+2.2.2 - June 15, 2001
+
+    * Added Get and Set functions for the server port
+
+2.2.1 - May 25, 2001
+
+    * Fixed proxy URL bug. This bug formed a bad URL which affected
+      only HTTP Proxy connections - SOCKS was not affected by this bug.
+
+    * Added proxy server realm name get/set functions for user.
+      When using HTTP Proxy, user must set realm name.
+
+2.2.0 - May 17, 2001
+
+    * Replaced DOM XML parsing with SAX XML parsing.
+
+    * Added proxy support.
+
+    * Modified release batch file to be easier to read.
+
+2.1.2 - May 8, 2001
+
+    * Modified SDK to use HTTPClient instead of URLConnection, for the
+      purpose of using timeouts.
+
+2.1.1 - April 26, 2001
+
+    * upgraded the release script.
+
+    * fixed user agent miscommunication.
+
+2.1.0 - April 7, 2001
+
+    * changed release package setup.
+
+    * first log entry...

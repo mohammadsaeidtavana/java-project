@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="jspFileUpload:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/jspFileUpload_war</output-path>
+    <root id="archive" name="jspFileUpload_war.war">
+      <element id="artifact" artifact-name="jspFileUpload:war exploded" />
+    </root>
+  </artifact>
+</component>

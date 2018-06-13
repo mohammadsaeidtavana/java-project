@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="dncipcheck:jar">
+    <output-path>$PROJECT_DIR$/../..</output-path>
+    <root id="archive" name="dncipcheck.jar">
+      <element id="module-output" name="dncipcheck" />
+    </root>
+  </artifact>
+</component>

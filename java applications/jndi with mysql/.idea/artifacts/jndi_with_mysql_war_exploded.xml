@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="jndi with mysql:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/jndi_with_mysql_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="jndi with mysql/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="jndi with mysql" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

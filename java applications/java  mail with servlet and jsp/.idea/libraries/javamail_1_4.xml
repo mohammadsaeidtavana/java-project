@@ -1,0 +1,20 @@
+<component name="libraryTable">
+  <library name="javamail-1.4">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../java mail/java mail api and framework/javamail-1.4.6" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="file://$PROJECT_DIR$/../java mail/java mail api and framework/javamail-1.4.6/docs/javadocs" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../java mail/java mail api and framework/javamail-1.4.6/demo" />
+      <root url="file://$PROJECT_DIR$/../java mail/java mail api and framework/javamail-1.4.6/demo/client" />
+      <root url="file://$PROJECT_DIR$/../java mail/java mail api and framework/javamail-1.4.6/demo/logging" />
+      <root url="file://$PROJECT_DIR$/../java mail/java mail api and framework/javamail-1.4.6/demo/outlook" />
+      <root url="file://$PROJECT_DIR$/../java mail/java mail api and framework/javamail-1.4.6/demo/servlet" />
+      <root url="file://$PROJECT_DIR$/../java mail/java mail api and framework/javamail-1.4.6/demo/webapp/src/classes" />
+      <root url="file://$PROJECT_DIR$/../java mail/java mail api and framework/javamail-1.4.6/demo/webapp/src/taglib" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/../java mail/java mail api and framework/javamail-1.4.6" recursive="false" />
+  </library>
+</component>

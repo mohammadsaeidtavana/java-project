@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory">Chapter 55. Migration to Resteasy 3.1</title><link rel="stylesheet" href="css/jbossorg.css" type="text/css"/><meta xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" name="generator" content="DocBook XSL-NS Stylesheets V1.74.0"/><meta xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" http-equiv="Content-Type" content="text/html; charset=UTF-8"/><link rel="home" href="index.html" title="RESTEasy JAX-RS"/><link rel="up" href="index.html" title="RESTEasy JAX-RS"/><link rel="prev" href="doc.html" title="Chapter 54. Documentation Support"/><link rel="next" href="Migration_from_older_versions.html" title="Chapter 56. Migration from older versions"/></head><body><p xmlns:d="http://docbook.org/ns/docbook" id="title"><a href="http://www.jboss.org" class="site_href"><strong>JBoss.org</strong></a><a href="http://docs.jboss.org/" class="doc_href"><strong>Community Documentation</strong></a></p><ul xmlns:d="http://docbook.org/ns/docbook" class="docnav"><li class="previous"><a accesskey="p" href="doc.html"><strong>Prev</strong></a></li><li class="next"><a accesskey="n" href="Migration_from_older_versions.html"><strong>Next</strong></a></li></ul><div class="chapter" lang="en-US"><div class="titlepage"><div><div><h2 class="title"><a id="Migration_to_3_1"/>Chapter 55. Migration to Resteasy 3.1</h2></div></div></div><div class="toc"><dl><dt><span class="sect1"><a href="Migration_to_3_1.html#d4e2589">55.1. Upgrading with Resteasy 3 API</a></span></dt><dt><span class="sect1"><a href="Migration_to_3_1.html#d4e2637">55.2. Upgrading with Resteasy 2 API</a></span></dt></dl></div>
+
+
+    <p>
+    In a minor release like 3.1.0.Final, as opposed to a point release like 3.0.19.Final, the scope of 
+    permissible changes is broadened. User discernible changes in Resteasy 3.1.0.Final include
+    </p>
+    
+    <div class="itemizedlist"><ul><li>module reorganization</li><li>package reorganization</li><li>new features</li><li>minor behavioral changes</li><li>miscellaneous changes</li></ul></div>
+    
+    <p>
+    In this chapter we focus on changes that might cause existing code to fail or behave in new ways.
+    The audience for this discussion may be partitioned into three subsets, depending on the version
+    of Resteasy currently in use, the API currently in use, and the API to be used after an upgrade
+    to Resteasy 3.1. The following APIs are available:
+    </p>
+    
+    <div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="orderedlist"><ol><li>
+      <p><span class="bold"><strong>Resteasy 2</strong></span>: Resteasy 2 conforms to the JAX-RS 1 specification, and adds a
+      variety of additional facilities, such as a client API, a caching system, an interceptor framework, etc. 
+      All of these user facing classes and interfaces comprise the Resteasy 2 API.</p>
+      </li><li>
+      <p><span class="bold"><strong>Resteasy 3</strong></span>: Resteasy 3 conforms to the JAX-RS 2 specification, and adds some additional
+      facilities. Many of the non-spec facilities from the Resteasy 2 API are formalized, in altered form,
+      in JAX-RS 2, in which case the older facilites are deprecated. The non-deprecated user facing classes and interfaces in
+      Resteasy 3 comprise the Resteasy 3 API.</p>
+      </li></ol></div>
+    
+    <p>
+    These definitions are rather informal and imprecise, since the user facing classes / interfaces in Resteasy
+    3.0.19.Final, for example, are a proper superset of the user facing classes / interfaces in Resteasy 3.0.1.Final.
+    For this discussion, we identify the API with the version currently in use in a given project.
+    </p>
+    
+    <p>
+    Now, there are three potential target audiences of users planning to upgrade to Resteasy 3.1.0.Final:
+    </p>
+    
+    <div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="orderedlist"><ol><li>
+      <p>Those currently using Resteasy API 3 with some Resteasy 3.0.x release</p>
+      </li><li>
+      <p>Those currently using Resteasy API 2 with some Resteasy 2.x or 3.0.x release and planning
+      to upgrade to Resteasy API 3</p>
+      </li><li>
+      <p>Those currently using Resteasy API 2 with some Resteasy 2.x or 3.0.x release and planning
+      to continue to use Resteasy API 2</p>
+      </li></ol></div>
+    
+    <p>
+    Of these, users in Group 2 have the most work to do in upgrading from Resteasy API 2 to Resteasy API 3.
+    They should consult the separate guide
+    <a class="ulink" href="http://docs.jboss.org/resteasy/docs/resteasy-upgrade-guide-en-US.pdf">Upgrading from Resteasy 2 to Resteasy 3</a>.
+    </p>
+
+    <p>
+    Ideally, users in Groups 1 and 3 might make some changes to take advantage of new features but would have
+    no changes forced on them by reorganization or altered behavior. Indeed, that is almost the case, but there
+    are a few changes that they should be aware of.
+    </p>
+    
+    <div class="sect1" lang="en-US"><div class="titlepage"><div><div><h2 class="title"><a id="d4e2589"/>55.1. Upgrading with Resteasy 3 API</h2></div></div></div>
+    
+    
+    <p>
+    All Resteasy changes are documented in JIRA issues. Issues that describe detectable changes in
+    release 3.1.0.Final that might impact existing applications include
+    </p>
+    
+    <div class="itemizedlist"><ul><li>
+      <a class="ulink" href="https://issues.jboss.org/browse/RESTEASY-1341">RESTEASY-1341: Build method of org.jboss.resteasy.client.jaxrs.internal.ClientInvocationBuilder always return the same instance.</a>
+      <p>
+      When a <code class="methodname">build()</code> method from
+      </p>
+      <div class="itemizedlist"><ul><li><code class="classname">org.jboss.resteasy.client.jaxrs.internal.ClientInvocationBuilder</code> in resteasy-client,</li><li><code class="classname">org.jboss.resteasy.specimpl.LinkBuilderImpl</code> in resteasy-jaxrs,</li><li><code class="classname">org.jboss.resteasy.specimpl.ResteasyUriBuilder</code> in resteasy-jaxrs</li></ul></div>
+      <p>
+      is called, it will return a new object. This behavior might be seen indirectly. For example,
+      </p>
+      <pre xmlns="" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="">
+Builder builder = client.target(generateURL(path)).request();
+...
+Link link = new LinkBuilderImpl().uri(href).build();
+...
+URI uri = uriInfo.getBaseUriBuilder().path("test").build();
+      </pre>
+      </li><li>
+      <a class="ulink" href="https://issues.jboss.org/browse/RESTEASY-1433">RESTEASY-1433: Compile with JDK 1.8 source/target version</a>
+      <p>
+      As it says. Depending on the application, it might be necessary to recompile with a target of JDK 1.8 so that calls to Resteasy code
+      can work.
+      </p>
+      </li><li>
+      <a class="ulink" href="https://issues.jboss.org/browse/RESTEASY-1484">RESTEASY-1484: CVE-2016-6346: Abuse of GZIPInterceptor in can lead to denial of service attack</a>
+      <p>
+      Prior to release 3.1.0.Final, the default behavior of Resteasy was to use GZIP to compress and decompress messages
+      whenever "gzip" appeared in the Content-Encoding header.
+      However, decompressing messages can lead to security issues, so, as of release 3.1.0.Final, GZIP compression has to
+      be enabled explicitly. For details, see Chapter <a class="link" href="gzip.html" title="Chapter 29. GZIP Compression/Decompression">GZIP Compression/Decompression</a>.
+      </p>
+      <p><span class="bold"><strong>Note.</strong></span> Because of some package reorganization due to RESTEASY-1531 (see below),
+      the GZIP interceptors, which used to be in package <code class="classname">org.jboss.resteasy.plugins.interceptors.encoding</code> are
+      now in <code class="classname">org.jboss.resteasy.plugins.interceptors</code>.</p>
+      </li><li>
+      <a class="ulink" href="https://issues.jboss.org/browse/RESTEASY-1531">RESTEASY-1531: Restore removed Resteasy internal classes into a deprecated/disabled module</a>
+      <p>
+      This issue is related to refactoring deprecated elements of the Resteasy 2 API into a separate module, and, ideally,
+      would have no bearing at all on Resteasy 3. However, a reorganization of packages has led to moving some
+      non-deprecated API elements in the resteasy-jaxrs module:
+      </p>
+      
+      <div class="itemizedlist"><ul><li>
+          <div class="literallayout"><p><code class="classname">org.jboss.resteasy.client.ClientURI</code> is now<br/>
+          <code class="classname">org.jboss.resteasy.annotations.ClientURI</code></p></div>
+        </li><li>
+          <div class="literallayout"><p><code class="classname">org.jboss.resteasy.core.interception.JaxrsInterceptorRegistryListener</code> is now<br/>
+<code class="classname">org.jboss.resteasy.core.interception.jaxrs.JaxrsInterceptorRegistryListener</code></p></div>
+        </li><li>
+	      <div class="literallayout"><p><code class="classname">org.jboss.resteasy.spi.interception.DecoratorProcessor</code> is now<br/>
+<code class="classname">org.jboss.resteasy.spi.DecoratorProcessor</code></p></div>
+	    </li><li>
+          <div class="literallayout"><p>All of the dynamic features and interceptors in the package<br/>
+<code class="classname">org.jboss.resteasy.plugins.interceptors.encoding</code> are now in<br/>
+<code class="classname">org.jboss.resteasy.plugins.interceptors</code></p></div>
+        </li></ul></div>
+	  </li></ul></div>
+</div>
+
+<div class="sect1" lang="en-US"><div class="titlepage"><div><div><h2 class="title"><a id="d4e2637"/>55.2. Upgrading with Resteasy 2 API</h2></div></div></div>
+    
+    
+    <p>
+    Most of the deprecated classes and interfaces
+    from Resteasy 2 have been segregated in a separate module, resteasy-legacy, as of release 3.1.0.Final.
+    A few remain in module resteasy-jaxrs for technical reasons. Eventually, all such classes and interfaces will be
+    removed from Resteasy. Most of the relocated elements are internal, so ensuring that resteasy-legacy is on the
+    classpath will make most changes undetectable. One way to do that, of course, is to include it in an application's
+    WAR. In the context of WildFly, it is also possible to use a jboss-deployment-structure.xml file in the 
+    WEB-INF directory of your WAR file. For example:
+    </p>
+    
+        <pre xmlns="" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="">
+&lt;jboss-deployment-structure&gt;
+    &lt;deployment&gt;
+        &lt;dependencies&gt;
+            &lt;module name="org.jboss.resteasy.resteasy-legacy"/&gt;
+        &lt;/dependencies&gt;
+    &lt;/deployment&gt;
+&lt;/jboss-deployment-structure&gt;</pre>
+
+    <p>
+    There are a few API classes and interfaces from resteasy-jaxrs that have moved to a new package
+    in resteasy-legacy. These are
+    </p>
+    
+    <div class="itemizedlist"><ul><li><div class="literallayout"><p><code class="classname">org.jboss.resteasy.annotations.ClientResponseType</code> is now<br/>
+<code class="classname">org.jboss.resteasy.annotations.legacy.ClientResponseType</code></p></div>
+      </li><li><div class="literallayout"><p><code class="classname">org.jboss.resteasy.spi.Link</code> is now<br/>
+	    <code class="classname">org.jboss.resteasy.client.Link</code></p></div>
+      </li><li><div class="literallayout"><p><code class="classname">org.jboss.resteasy.spi.LinkHeader</code> is now<br/>
+	    <code class="classname">org.jboss.resteasy.client.LinkHeader</code></p></div>
+      </li></ul></div>
+</div>
+
+</div><ul xmlns:d="http://docbook.org/ns/docbook" class="docnav"><li class="previous"><a accesskey="p" href="doc.html"><strong>Prev</strong>Chapter 54. Documentation Support</a></li><li class="up"><a accesskey="u" href="#"><strong>Top of page</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Front page</strong></a></li><li class="next"><a accesskey="n" href="Migration_from_older_versions.html"><strong>Next</strong>Chapter 56. Migration from older versions</a></li></ul></body></html>

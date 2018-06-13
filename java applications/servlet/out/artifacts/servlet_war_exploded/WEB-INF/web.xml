@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+    <servlet>
+        <servlet-name>saedServlet</servlet-name>
+        <servlet-class>controler.saeedServlet</servlet-class>
+        <init-param>
+            <param-name>name</param-name>
+            <param-value>saeed</param-value>
+        </init-param>
+        <init-param>
+            <param-name>family</param-name>
+            <param-value>tavana</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>saedServlet</servlet-name>
+        <url-pattern>/saeed.do</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>getperson</servlet-name>
+        <servlet-class>controler.getperosn</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>getperson</servlet-name>
+        <url-pattern>/get.do</url-pattern>
+    </servlet-mapping>
+    <listener>
+        <listener-class>controler.session_listnerr</listener-class>
+    </listener>
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+</web-app>

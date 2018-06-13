@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="hibernate ,mysql jdbc API">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../java applications/Api and library/hibernate ,mysql jdbc API" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../java applications/Api and library/hibernate ,mysql jdbc API" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/../java applications/Api and library/hibernate ,mysql jdbc API" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../java applications/Api and library/hibernate ,mysql jdbc API" recursive="false" type="SOURCES" />
+  </library>
+</component>

@@ -1,0 +1,25 @@
+body{
+    background-color: #7F9FBF;
+}
+h1{
+    color: #222222;
+    text-align: center;
+    font-family: "Al Bayan";
+    font-size: larger;
+    border: dashed;
+}
+p.sa{
+    font-size: larger;
+    color: #222222;
+    padding: inherit;
+    font-family: "American Typewriter";
+    background-color: #888888;
+}
+form{
+    background-color: #7e917f;
+
+}
+table{
+    border-spacing: 5px;
+    background-color: #66cc33;
+}

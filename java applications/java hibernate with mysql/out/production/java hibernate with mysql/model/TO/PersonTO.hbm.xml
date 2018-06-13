@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="model.TO">
+    <class name="model.TO.person" table="person">
+        <id name="id" type="integer">
+            <column name="ID" sql-type="INT(6)"/>
+            <generator class="increment"/>
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="name" sql-type="VARCHAR(20)"/>
+        </property>
+        <property name="family" type="java.lang.String">
+            <column name="family" sql-type="VARCHAR(20)"/>
+        </property>
+        <many-to-one name="personinfo" class="model.TO.info" column="FK_PERSON" cascade="all"/>
+
+    </class>
+
+</hibernate-mapping>

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="swsms-2.6.3">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../Api and library/sw-sdk-java-2.6.3/swsms-2.6.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
